@@ -17,6 +17,7 @@ class Lotto {
 
   static generateLottoNumbers(){
     const numbers = Random.pickUniqueNumbersInRange(1, 45, 6);
+    numbers.sort((numA, numB) => numA - numB);
     return numbers;
   }
 
