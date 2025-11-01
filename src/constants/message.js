@@ -4,4 +4,14 @@ export const INPUT_MESSAGES = {
     BONUS_NUMBER_INPUT : '보너스 번호를 입력해 주세요.'
 }
 
+export const OUTPUT_MESSAGE = {
+    LOTTO_COUNT : '개를 구매했습니다.',
+}
+
 export const NEWLINE = "\n";
+
+export const ERROR_PREFIX = '[ERROR] ';
+
+// export const ERROR_MESSAGE = {
+
+// }

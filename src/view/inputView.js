@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGES, NEWLINE } from "../constants/message.js";
 
-export class InputView {
+export default class InputView {
     async #prompt(message) {
         const input = await Console.readLineAsync(message + NEWLINE);
         return input.trim();
@@ -12,11 +12,11 @@ export class InputView {
     }
 
     async getWinningNumbers() {
-        return await this.#prompt(INPUT_MESSAGES.WINNING_NUMBERS_INPUT);
+        return await this.#prompt(NEWLINE + INPUT_MESSAGES.WINNING_NUMBERS_INPUT);
     }
 
     async getBonusNumber() {
-        return await this.#prompt(INPUT_MESSAGES.BONUS_NUMBER_INPUT);
+        return await this.#prompt(NEWLINE + INPUT_MESSAGES.BONUS_NUMBER_INPUT);
     }
 }
 
