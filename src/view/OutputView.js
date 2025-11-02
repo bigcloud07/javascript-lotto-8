@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { OUTPUT_MESSAGE, NEWLINE } from "../constants/message.js";
+import { OUTPUT_MESSAGES, NEWLINE } from "../constants/message.js";
 
 
 export default class OutputView {
@@ -9,10 +9,14 @@ export default class OutputView {
     }
 
     printLottoCount(countNumber) {
-        return this.#prompt(NEWLINE + countNumber + OUTPUT_MESSAGE.LOTTO_COUNT);
+        return this.#prompt(NEWLINE + countNumber + OUTPUT_MESSAGES.LOTTO_COUNT_SUFFIX);
     }
 
-    printLottoNumbers(lottoNumbers){
+    printLottoNumbers(lottoNumbers) {
         return this.#prompt(lottoNumbers);
+    }
+
+    printMessage(message){
+        return this.#prompt(message);
     }
 }

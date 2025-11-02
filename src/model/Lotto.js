@@ -1,5 +1,6 @@
 import { Random } from "@woowacourse/mission-utils";
-
+import { LOTTO_CONFIG } from "../constants/config.js";
+import { lottoNumbersParser } from "../utils/parser.js";
 
 class Lotto {
   #numbers;
@@ -15,12 +16,22 @@ class Lotto {
     }
   }
 
-  static generateLottoNumbers(){
-    const numbers = Random.pickUniqueNumbersInRange(1, 45, 6);
+  static generateLottoNumbers() {
+    const numbers = Random.pickUniqueNumbersInRange(LOTTO_CONFIG.MIN_NUM, LOTTO_CONFIG.MAX_NUM, LOTTO_CONFIG.NUM_COUNT);
     numbers.sort((numA, numB) => numA - numB);
     return numbers;
   }
 
+  static generateMultipleLottos(lottoCount) {
+    const lottoTickets = [];
+
+    for (let repetitions = 0; repetitions < lottoCount; repetitions++) {
+      const lottoTicket = this.generateLottoNumbers();
+      lottoTickets.push(lottoTicket);
+    }
+
+    return lottoTickets;
+  }
 }
 
 export default Lotto;

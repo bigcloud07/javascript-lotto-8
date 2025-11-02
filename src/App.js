@@ -1,4 +1,6 @@
 import Lotto from "./model/Lotto.js";
+import { LottoResult } from "./model/LottoResult.js";
+import { bonusNumberParser, lottoNumbersParser, winningNumberParser } from "./utils/parser.js";
 import InputView from "./view/InputView.js";
 import OutputView from "./view/OutputView.js";
 
@@ -6,27 +8,32 @@ class App {
   async run() {
     const inputView = new InputView();
     const outputView = new OutputView()
-    
-    const money = await inputView.getPurchaseAmount();
-    const lottoCount = money / 1000;
+    const lottoResult = new LottoResult();
+
+    const purchaseAmount = await inputView.getPurchaseAmount();
+    const lottoCount = purchaseAmount / 1000;
 
     outputView.printLottoCount(lottoCount);
-
-    for(let _ = 0 ; _ < lottoCount ; _++){
-      const lottoNumbers = Lotto.generateLottoNumbers();
-      outputView.printLottoNumbers(lottoNumbers);
-    }
-
+    
+    const issuedLottos = Lotto.generateMultipleLottos(lottoCount);
+    const parsedLottos = lottoNumbersParser(issuedLottos);
+    outputView.printLottoNumbers(parsedLottos);
+    
     const winningNumbers = await inputView.getWinningNumbers();
-    const lotto = new Lotto(winningNumbers);
+    const parsedWinningNumbers = winningNumberParser(winningNumbers);
+
 
     const bonusNumber = await inputView.getBonusNumber();
+    const parsedBonusNumber = bonusNumberParser(bonusNumber);
 
-    
+    lottoResult.updateStatistics(issuedLottos, parsedWinningNumbers, parsedBonusNumber);
 
-    
+    const winningMessage = lottoResult.generateWinningMessage();
+    const profitRateMessage = lottoResult.generateProfitRateMessage(purchaseAmount);
 
-    // const lotto = new Lotto(winningNumbers);
+    outputView.printMessage(winningMessage);
+    outputView.printMessage(profitRateMessage);
+
   }
 }
 
