@@ -1,4 +1,4 @@
-import { LottoResult } from "./LottoResult";
+import { LottoResult } from "./LottoResult.js";
 
 
 describe("LottoResult 클래스 테스트", () => {
