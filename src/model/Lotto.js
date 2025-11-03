@@ -16,7 +16,7 @@ class Lotto {
     }
 
     const uniqueLottoNumbers = new Set(numbers);
-    if (uniqueLottoNumbers.size !== 6) {
+    if (uniqueLottoNumbers.size !== LOTTO_CONFIG.NUM_COUNT) {
       throw new Error(ERROR_MESSAGES.DUPLICATE_NUMBER);
     }
 

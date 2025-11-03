@@ -1,3 +1,4 @@
+import { LOTTO_CONFIG, LOTTO_PARSER_CONFIG } from "../constants/config.js";
 import { validateEmptyValue, validateIsNumber, validateNoEmptyBetweenCommas, validateNoSpace, validateOnlyCommaDelimiter, validateOutofRange, validatePurchaseAmountRules, validateRangeBonusNumber, validateStartsWithNumber, validateUniqueLottoNumbers, validateWinningNumberCount } from "./validator.js";
 
 export function purchaseAmountParser(purchaseAmount) {
@@ -34,7 +35,7 @@ export function bonusNumberParser(bonusNumber) {
 
 export function lottoNumbersParser(lottos) {
     const parsedLottoNumber = lottos.map(
-        (numbers) => `[${numbers.join(', ')}]`
-    ).join('\n');
+        (numbers) => `[${numbers.join(LOTTO_PARSER_CONFIG.LOTTO_SEPARATOR)}]`
+    ).join(LOTTO_PARSER_CONFIG.NEWLINE);
     return parsedLottoNumber;
 }
