@@ -4,7 +4,7 @@ import { INPUT_MESSAGES, NEWLINE } from "../constants/message.js";
 export default class InputView {
     async #prompt(message) {
         const input = await Console.readLineAsync(message + NEWLINE);
-        return input.trim();
+        return input;
     }
 
     async getPurchaseAmount() {
