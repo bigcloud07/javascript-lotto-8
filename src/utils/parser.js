@@ -1,4 +1,4 @@
-import { LOTTO_CONFIG, LOTTO_PARSER_CONFIG } from "../constants/config.js";
+import { LOTTO_PARSER_CONFIG } from "../constants/config.js";
 import { validateEmptyValue, validateIsNumber, validateNoEmptyBetweenCommas, validateNoSpace, validateOnlyCommaDelimiter, validateOutofRange, validatePurchaseAmountRules, validateRangeBonusNumber, validateStartsWithNumber, validateUniqueLottoNumbers, validateWinningNumberCount } from "./validator.js";
 
 export function purchaseAmountParser(purchaseAmount) {

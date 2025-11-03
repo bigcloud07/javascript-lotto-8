@@ -14,7 +14,7 @@ export class LottoResult {
         };
     }
 
-    #checkWinningNumbers(lottos, winningNumbers, bonusNumber) {
+    checkWinningNumbers(lottos, winningNumbers, bonusNumber) {
         return lottos.map((lotto) => {
             const matchCount = lotto.filter((num) => winningNumbers.includes(num)).length;
             const hasBonus = lotto.includes(bonusNumber);
@@ -22,7 +22,7 @@ export class LottoResult {
         });
     };
 
-    #applyResult(matchCount, hasBonus) {
+    applyResult(matchCount, hasBonus) {
         if (matchCount === 6) {
             this.#statistics[6].count += 1;
             return;
@@ -36,10 +36,10 @@ export class LottoResult {
     };
 
     updateStatistics(lottos, winningNumbers, bonusNumber) {
-        const checkedResults = this.#checkWinningNumbers(lottos, winningNumbers, bonusNumber);
+        const checkedResults = this.checkWinningNumbers(lottos, winningNumbers, bonusNumber);
 
         checkedResults.forEach(({ matchCount, hasBonus }) =>
-            this.#applyResult(matchCount, hasBonus)
+            this.applyResult(matchCount, hasBonus)
         );
     };
 
@@ -59,7 +59,7 @@ export class LottoResult {
         return winningPromptLines.join(NEWLINE);
     };
 
-    #calculateProfitRate(purchaseAmount) {
+    calculateProfitRate(purchaseAmount) {
         const totalReward = Object.values(this.#statistics).reduce(
             (sum, { count, reward }) => sum + count * reward, LOTTO_RESULT_CONFIG.INITIAL_VALUE
         );
@@ -69,7 +69,7 @@ export class LottoResult {
     };
 
     generateProfitRateMessage(purchaseAmount) {
-        const profitRate = this.#calculateProfitRate(purchaseAmount);
+        const profitRate = this.calculateProfitRate(purchaseAmount);
         const profitRateMessage = `${OUTPUT_MESSAGES.PROFIT_PREFIX}${profitRate}${OUTPUT_MESSAGES.PROFIT_SUFFIX}`;
 
         return profitRateMessage;
