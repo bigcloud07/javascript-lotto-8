@@ -1,4 +1,4 @@
-import Lotto from "./model/Lotto.js";
+import Lotto from "./Lotto.js";
 import { LottoResult } from "./model/LottoResult.js";
 import { bonusNumberParser, lottoNumbersParser, purchaseAmountParser, winningNumberParser } from "./utils/parser.js";
 import InputView from "./view/InputView.js";
@@ -47,7 +47,6 @@ class App {
 
     outputView.printMessage(winningMessage);
     outputView.printMessage(profitRateMessage);
-
   }
 }
 

@@ -1,4 +1,4 @@
-import Lotto from "../src/model/Lotto";
+import Lotto from "../src/Lotto.js";
 import { ERROR_MESSAGES } from "../src/constants/message";
 import { LOTTO_CONFIG } from "../src/constants/config";
 

@@ -1,4 +1,5 @@
-import { LottoResult } from "../src/model/LottoResult.js";
+import { LottoResult } from "./LottoResult";
+
 
 describe("LottoResult 클래스 테스트", () => {
   test("초기화 시 count값이 모두 0으로 설정된다.", () => {
