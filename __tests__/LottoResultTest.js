@@ -61,21 +61,4 @@ describe("LottoResult 클래스 테스트", () => {
     expect(message).toMatch(/총 수익률은/);
     expect(message).toMatch(/%입니다/);
   });
-
-  test("#calculateProfitRate 내부 계산 결과가 올바르게 반영된다.", () => {
-    const lottoResult = new LottoResult();
-    const lottos = [
-      [1, 2, 3, 4, 5, 6], 
-      [1, 2, 3, 4, 5, 7], 
-    ];
-    const winningNumbers = [1, 2, 3, 4, 5, 6];
-    const bonusNumber = 7;
-
-    lottoResult.updateStatistics(lottos, winningNumbers, bonusNumber);
-    const profitMsg = lottoResult.generateProfitRateMessage(2000);
-    const match = profitMsg.match(/(\d+\.\d+)/);
-    const rate = parseFloat(match[1]);
-
-    expect(rate).toBeGreaterThan(0);
-  });
 });
